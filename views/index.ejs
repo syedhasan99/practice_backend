@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body class="w-full h-screen">
+    <div class="main h-full w-full bg-zinc-900 text-white p-5">
+      <h1 class="text-4xl text-center">Notes App</h1>
+      <form action="/create" method="post">
+
+      <input
+        name="title"
+        class="block px-5 py-2 bg-zinc-800 w-full mt-5 rounded-md outline-none"
+        type="text"
+        placeholder="Title goes here..."
+      />
+      <textarea
+        name="details"
+        class="block px-5 py-2 bg-zinc-800 resize-none mt-5 w-full rounded-md outline-none"
+        name=""
+        id=""
+        placeholder="Write your task details here..."
+      ></textarea>
+      <button
+      type="submit"
+        class="px-4 py-3 bg-indigo-500 hover:bg-indigo-400 rounded-md mt-5 text-lg font-semibold"
+      >
+        Add note
+      </button>
+    </form>
+
+
+      <div class="notes-container flex flex-wrap gap-3 p-10">
+        <% if (files.length > 0) { %> <% files.forEach((val) => { %>
+        <div class="note bg-zinc-800 min-w-72 px-3 py-4 rounded-md">
+          <h2 class="text-3xl tracking-tighter"><%= val.split('.')[0] %></h2>
+          <a class="text-blue-500 mt-3 inline-block" href="note/<%= val.split('.')[0] %>"
+            >Learn More</a
+          >
+        </div>
+        <% }) %> <% } else { %>
+        <p class="text-zinc-600">No task yet</p>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
