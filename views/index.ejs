@@ -38,9 +38,12 @@
         <% if (files.length > 0) { %> <% files.forEach((val) => { %>
         <div class="note bg-zinc-800 min-w-72 px-3 py-4 rounded-md">
           <h2 class="text-3xl tracking-tighter"><%= val.split('.')[0] %></h2>
-          <a class="text-blue-500 mt-3 inline-block" href="note/<%= val.split('.')[0] %>"
+          <div class="flex justify-between w-full mt-3">
+          <a class="text-blue-500 inline-block" href="note/<%= val.split('.')[0] %>"
             >Learn More</a
           >
+          <a href="edit/<%= val.split('.')[0] %>" class="text-zinc-500">Edit</a>
+          </div>
         </div>
         <% }) %> <% } else { %>
         <p class="text-zinc-600">No task yet</p>

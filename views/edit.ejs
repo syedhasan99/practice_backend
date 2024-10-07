@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="main h-screen w-full bg-zinc-900 text-white p-5">
+      <a href="/" class="text-blue-500 mb-5 inline-block">Go to Home Page</a>
+      <form action="/edit" method="post">
+
+        <input
+          name="previous"
+          class="block px-5 py-2 bg-zinc-800 w-full mt-5 rounded-md outline-none text-zinc-600"
+          type="text"
+          placeholder="Previous Name..."
+          readonly
+          value="<%= fileName %>"
+        />
+        <input
+          name="new"
+          class="block px-5 py-2 bg-zinc-800 w-full mt-5 rounded-md outline-none"
+          type="text"
+          placeholder="New Name..."
+        />
+        <button
+        type="submit"
+          class="px-4 py-3 bg-yellow-500 hover:bg-yellow-400 rounded-md mt-5 text-lg font-semibold"
+        >
+          Update Name
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

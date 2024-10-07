@@ -29,14 +29,29 @@ app.post("/create", (req, res) => {
   );
 });
 
-app.get('/note/:title', (req, res) => {
-    let title = req.params.title;
-    // fs.readdir()
-    // res.send(title)
-    fs.readFile(`./files/${title}.txt`, 'utf-8' , (err, fileData) => {
-        if (err) throw err;
-        res.render('file', {fileName: title, description: fileData})
-    })
+app.get("/note/:title", (req, res) => {
+  let title = req.params.title;
+  // fs.readdir()
+  // res.send(title)
+  fs.readFile(`./files/${title}.txt`, "utf-8", (err, fileData) => {
+    if (err) throw err;
+    res.render("show", { fileName: title, description: fileData });
+  });
+});
+
+app.get("/edit/:title", (req, res) => {
+  let title = req.params.title;
+  // res.send(title)
+  fs.readFile(`./files/${title}.txt`, "utf-8", (err, fileData) => {
+    if (err) throw err;
+    res.render("edit", { fileName: title });
+  });
+});
+
+app.post('/edit', (req, res) => {
+  fs.rename(`./files/${req.body.previous}.txt`, `./files/${req.body.new}.txt`, (err) => {
+    res.redirect('/');
+  })
 })
 
 app.listen(3000);
